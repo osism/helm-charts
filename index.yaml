@@ -1,0 +1,15 @@
+apiVersion: v1
+entries:
+  github-actions-runner:
+  - apiVersion: v2
+    appVersion: 2.282.1
+    created: "2021-09-17T20:19:04.4077+02:00"
+    description: A Helm chart to deploy self-hosted GitHub Actions runners
+    digest: e2cad52efd84aeecd00198786a3ac8c437ddcbff23fc11e975ef26e0b16c472c
+    icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
+    name: github-actions-runner
+    type: application
+    urls:
+    - https://osism.github.io/helm-charts/github-actions-runner-1.0.0.tgz
+    version: 1.0.0
+generated: "2021-09-17T20:19:04.407322+02:00"

@@ -1,0 +1,28 @@
+# Default values for github-actions-runner.
+
+image:
+  name: osism/github-actions-runner
+  pullPolicy: Always
+  repository: quay.io
+  tag: "latest"
+  auth:
+    enabled: false
+    # username:
+    # password:
+    # email:
+    # NOTE: * if left out, the secret name will be generated from the fullname
+    #       * if set and username, password and email are not set, no secert
+    #         will be generated, you may use an existing one
+    #       * if set and username, password and email are set, a secret will be
+    #         generated with the name you choose
+    # secret_name: 
+nameOverride: ""
+fullnameOverride: ""
+podAnnotations: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+runner:
+  github_url: https://github.com/organisation/
+  name: github-actions-runner
+  token: token
