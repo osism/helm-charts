@@ -24,8 +24,12 @@ spec:
       {{- end }}
       containers:
         - env:
-            - name: SECRET_ORG
+            - name: SECRET_GITHUB_API_URL
+              value: {{ .Values.runner.api_url }}
+            - name: SECRET_GITHUB_ORG
               value: {{ .Values.runner.org }}
+            - name: SECRET_GITHUB_URL
+              value: {{ .Values.runner.url }}
             - name: SECRET_NAME
               value: {{ .Values.runner.name }}
             - name: SECRET_GITHUB_USER
