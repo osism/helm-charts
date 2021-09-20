@@ -24,11 +24,16 @@ spec:
       {{- end }}
       containers:
         - env:
-            - name: SECRET_GITHUB_URL
-              value: {{ .Values.runner.github_url }}
+            - name: SECRET_ORG
+              value: {{ .Values.runner.org }}
             - name: SECRET_NAME
               value: {{ .Values.runner.name }}
-            - name: SECRET_TOKEN
+            - name: SECRET_GITHUB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ include "runner.fullname" . }}-github"
+                  key: user
+            - name: SECRET_GITHUB_PERSONAL_ACCCESS_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: "{{ include "runner.fullname" . }}-github"

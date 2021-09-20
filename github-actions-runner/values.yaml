@@ -23,6 +23,7 @@ nodeSelector: {}
 tolerations: []
 affinity: {}
 runner:
-  github_url: https://github.com/organisation/
+  org: osism
   name: github-actions-runner
-  token: token
+  token: github_personal_access_token  # e.g. from a bot account, requires "admin:org" rights as well as admin role in organization
+  user: github_user
