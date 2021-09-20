@@ -26,7 +26,7 @@ tolerations: []
 runner:
   url: https://github.com
   api_url: https://api.github.com
-  org: organisation
+  organisation: organisation
   name: github-actions-runner
   token: github_personal_access_token  # e.g. from a bot account, requires "admin:org" rights as well as admin role in organization
   user: github_user

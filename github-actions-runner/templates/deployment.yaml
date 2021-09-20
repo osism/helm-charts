@@ -27,7 +27,7 @@ spec:
             - name: SECRET_GITHUB_API_URL
               value: {{ .Values.runner.api_url }}
             - name: SECRET_GITHUB_ORG
-              value: {{ .Values.runner.org }}
+              value: {{ .Values.runner.organisation }}
             - name: SECRET_GITHUB_URL
               value: {{ .Values.runner.url }}
             - name: SECRET_NAME
