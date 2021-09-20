@@ -11,7 +11,7 @@ spec:
       {{- include "runner.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
+      {{- with .Values.annotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
@@ -45,6 +45,12 @@ spec:
             - name: https
               containerPort: 443
               protocol: TCP
+          securityContext:
+            capabilities:
+              {{- with .Values.capabilities }}
+                {{- toYaml . | nindent 16 }}
+              {{- end }}
+      {{- end }}
       {{- if .Values.image.auth.enabled }}
       imagePullSecrets:
         - name: {{ .Values.image.auth.secret_name | default (printf "%s" ( include "runner.fullname" . )) }}
