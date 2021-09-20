@@ -16,12 +16,13 @@ image:
     #       * if set and username, password and email are set, a secret will be
     #         generated with the name you choose
     # secret_name: 
-nameOverride: ""
+affinity: {}
+annotations: {}
+capabilities: {}
 fullnameOverride: ""
-podAnnotations: {}
+nameOverride: ""
 nodeSelector: {}
 tolerations: []
-affinity: {}
 runner:
   org: osism
   name: github-actions-runner
