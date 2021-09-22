@@ -28,7 +28,7 @@ runner:
   api_url: https://api.github.com
   organisation: organisation
   name: github-actions-runner
-  app_id: 123456
+  app_id: "123456" # make sure this id is in quotes
   rsa_key: |-
     -----BEGIN RSA PRIVATE KEY-----
     foobar
