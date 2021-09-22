@@ -32,16 +32,13 @@ spec:
               value: {{ .Values.runner.url }}
             - name: SECRET_NAME
               value: {{ .Values.runner.name }}
-            - name: SECRET_GITHUB_USER
+            - name: SECRET_GITHUB_APP_ID
               valueFrom:
                 secretKeyRef:
                   name: "{{ include "runner.fullname" . }}-github"
-                  key: user
-            - name: SECRET_GITHUB_PERSONAL_ACCCESS_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: "{{ include "runner.fullname" . }}-github"
-                  key: token
+                  key: app_id
+            - name: SECRET_KEY_PATH
+              value: "/github_app_key/app.pem"
           image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           name: {{ .Chart.Name }}
@@ -54,6 +51,10 @@ spec:
             capabilities:
               {{- toYaml . | nindent 14 }}
             {{- end }}
+          volumeMounts:
+            - mountPath: "/github_app_key"
+              name: appkey
+              readOnly: true
       {{- if .Values.image.auth.enabled }}
       imagePullSecrets:
         - name: {{ .Values.image.auth.secret_name | default (printf "%s" ( include "runner.fullname" . )) }}
@@ -66,3 +67,10 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+        - name: appkey
+          secret:
+            items:
+              - key: rsa_key
+                path: app.pem
+            secretName: "{{ include "runner.fullname" . }}-github"

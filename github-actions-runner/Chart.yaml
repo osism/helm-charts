@@ -2,6 +2,6 @@ apiVersion: v2
 name: github-actions-runner
 description: A Helm chart to deploy self-hosted GitHub Actions runners
 type: application
-version: 1.2.0
+version: 1.3.0
 appVersion: "2.282.1"
 icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg

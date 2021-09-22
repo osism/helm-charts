@@ -3,7 +3,18 @@ entries:
   github-actions-runner:
   - apiVersion: v2
     appVersion: 2.282.1
-    created: "2021-09-20T20:09:47.125356+02:00"
+    created: "2021-09-22T09:05:15.559658+02:00"
+    description: A Helm chart to deploy self-hosted GitHub Actions runners
+    digest: 1c8bfb65724b0700ae9669d10f28e4bbd9294b2d4217014f2b10d427c65cd5ae
+    icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
+    name: github-actions-runner
+    type: application
+    urls:
+    - https://osism.github.io/helm-charts/github-actions-runner-1.3.0.tgz
+    version: 1.3.0
+  - apiVersion: v2
+    appVersion: 2.282.1
+    created: "2021-09-22T09:05:15.559459+02:00"
     description: A Helm chart to deploy self-hosted GitHub Actions runners
     digest: 1bab2ca8710fc958423299971f58d93b47d2ead3c9c20607d0f0c0f06169b645
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
@@ -14,7 +25,7 @@ entries:
     version: 1.2.0
   - apiVersion: v2
     appVersion: 2.282.1
-    created: "2021-09-20T20:09:47.125122+02:00"
+    created: "2021-09-22T09:05:15.559226+02:00"
     description: A Helm chart to deploy self-hosted GitHub Actions runners
     digest: f6d03f57503e713f7fb5221a966cbfb71d029dea45482bc3f2150d19f6e45f6c
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
@@ -25,7 +36,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: 2.282.1
-    created: "2021-09-20T20:09:47.124629+02:00"
+    created: "2021-09-22T09:05:15.558844+02:00"
     description: A Helm chart to deploy self-hosted GitHub Actions runners
     digest: e2cad52efd84aeecd00198786a3ac8c437ddcbff23fc11e975ef26e0b16c472c
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
@@ -34,4 +45,4 @@ entries:
     urls:
     - https://osism.github.io/helm-charts/github-actions-runner-1.0.0.tgz
     version: 1.0.0
-generated: "2021-09-20T20:09:47.123916+02:00"
+generated: "2021-09-22T09:05:15.557221+02:00"
