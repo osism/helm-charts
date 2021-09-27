@@ -1,0 +1,21 @@
+# Default values for smarter-device-manager
+affinity: {}
+annotations: {}
+capabilities: {}
+fullnameOverride: ""
+image:
+  name: smarter-device-manager
+  pullPolicy: IfNotPresent
+  repository: registry.gitlab.com/arm-research/smarter
+  # Overrides the image tag whose default is the chart appVersion.
+  #tag: ""
+nameOverride: ""
+nodeSelector:
+  smarter-device-manager: enabled
+resources: {}
+securityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop: 
+      - ALL
+tolerations: []

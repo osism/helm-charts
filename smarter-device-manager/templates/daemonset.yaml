@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ include "smarter-device-manager.fullname" . }}
+  labels:
+    name: {{ include "smarter-device-manager.fullname" . }}
+    role: agent
+spec:
+  selector:
+    matchLabels:
+      {{- include "smarter-device-manager.selectorLabels" . | nindent 6 }}
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+        node.kubernetes.io/bootstrap-checkpoint: "true"
+      {{- end }}
+      labels:
+        {{- include "smarter-device-manager.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}/{{ .Values.image.name }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          volumeMounts:
+            - name: device-plugin
+              mountPath: /var/lib/kubelet/device-plugins
+            - name: dev-dir
+              mountPath: /dev
+            - name: sys-dir
+              mountPath: /sys
+            - name: config
+              mountPath: /root/config
+        volumes:
+          - name: device-plugin
+            hostPath:
+              path: /var/lib/kubelet/device-plugins
+          - name: dev-dir
+            hostPath:
+              path: /dev
+          - name: sys-dir
+            hostPath:
+              path: /sys
+          - name: config
+            configMap:
+              name: {{ include "smarter-device-manager.fullname" . }}
+      dnsPolicy: ClusterFirstWithHostNet
+      hostname: {{ .Chart.Name }}
+      hostNetwork: true
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      priorityClassName: "system-node-critical"
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
