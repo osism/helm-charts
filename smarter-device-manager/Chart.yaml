@@ -1,0 +1,9 @@
+# This chart was inspired by https://github.com/kubernetes/kubernetes/issues/7890#issuecomment-766088805
+# and is based on https://gitlab.com/arm-research/smarter/smarter-device-manager
+apiVersion: v2
+appVersion: "v1.20.7"
+description: A Helm chart to deploy a fuse device manager
+icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
+name: smarter-device-manager
+type: application
+version: 1.0.0

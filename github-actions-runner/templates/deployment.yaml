@@ -46,6 +46,8 @@ spec:
             - name: https
               containerPort: 443
               protocol: TCP
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
           securityContext:
             {{- with .Values.capabilities }}
             capabilities:

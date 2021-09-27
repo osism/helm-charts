@@ -29,12 +29,40 @@ helm list --namespace github-actions-runner
 helm uninstall --namespace github-actions-runner github-actions-runner-1631901178
 ```
 
+## smarter-device-manager
+
+### Purpose
+
+This is a chart required by github-actions-runner. It provides e.g. */dev/fuse* file system access.
+The only value which should be set is the **nodeSelector**. Your worker nodes need to have this set,
+otherwise the daemonset won't deploy.
+
+### Installation
+
+```
+helm show values osism/smarter-device-manager >> values.yaml
+```
+
+```
+helm install smarter-device-manager --create-namespace --namespace smarter-device-manager --values values.yaml osism/smarter-device-manager
+```
+
+```
+helm list --namespace smarter-device-manager
+```
+
+```
+helm uninstall --namespace smarter-device-manager smarter-device-manager
+```
+
+
 ## Notes
 
 ### Packaging
 
 ```
 helm package github-actions-runner
+helm package smarter-device-manager
 ```
 
 ### Indexing
