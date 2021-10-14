@@ -15,18 +15,24 @@ helm repo update osism
 
 ```
 helm show values osism/github-actions-runner >> values.yaml
-```
-
-```
 helm install --generate-name --create-namespace --namespace github-actions-runner --values values.yaml osism/github-actions-runner
-```
-
-```
 helm list --namespace github-actions-runner
+helm uninstall --namespace github-actions-runner github-actions-runner-1631901178
 ```
 
+## hound-search
+
+### Purpose
+
+This chart installs a hound search container. This allows you to search with regex patterns through repositories like github.
+
+### Installation
+
 ```
-helm uninstall --namespace github-actions-runner github-actions-runner-1631901178
+helm show values osism/hound-search >> values.yaml
+helm --create-namespace --namespace hound-search hound-search ./hound-search --values values.yaml
+helm list --namespace hound-search
+helm uninstall --namespace hound-search hound-search
 ```
 
 ## smarter-device-manager
@@ -62,6 +68,7 @@ helm uninstall --namespace smarter-device-manager smarter-device-manager
 
 ```
 helm package github-actions-runner
+helm package hound-search
 helm package smarter-device-manager
 ```
 
