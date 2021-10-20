@@ -32,6 +32,10 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
+  tls: []
+  #  - secretName: hound-foobar-com
+  #    hosts:
+  #      - hound.foobar.com
 nameOverride: ""
 nodeSelector: {}
 service:
