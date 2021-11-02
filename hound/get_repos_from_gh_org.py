@@ -6,7 +6,7 @@ org = "osism"
 
 configmap = {
   "dbpath": "db",
-  "title": "OSISM repo search",
+  "title": "OSISM code search",
   "repos": {},
   "vcs-config": {
     "git": {
