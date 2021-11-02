@@ -1,4 +1,4 @@
-# Default values for hound-search.
+# Default values for hound
 
 affinity: {}
 annotations: {}

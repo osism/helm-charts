@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "hound-search.fullname" . }}
+  name: {{ include "hound.fullname" . }}
   labels:
-    {{- include "hound-search.labels" . | nindent 4 }}
+    {{- include "hound.labels" . | nindent 4 }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      {{- include "hound-search.selectorLabels" . | nindent 6 }}
+      {{- include "hound.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -16,7 +16,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "hound-search.selectorLabels" . | nindent 8 }}
+        {{- include "hound.selectorLabels" . | nindent 8 }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
@@ -48,7 +48,7 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: {{ include "hound-search.fullname" . }}
+            name: {{ include "hound.fullname" . }}
             items:
               - key: config
                 path: config.json

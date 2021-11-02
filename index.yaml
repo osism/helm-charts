@@ -3,7 +3,7 @@ entries:
   github-actions-runner:
   - apiVersion: v2
     appVersion: 2.283.1
-    created: "2021-10-20T11:36:27.047462+02:00"
+    created: "2021-11-02T10:17:57.30233+01:00"
     description: A Helm chart to deploy self-hosted GitHub Actions runners
     digest: a55ac693052eb9e49d38e4b932a232c15e86fc8ce156239c0d5fc10878c9b933
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
@@ -14,7 +14,7 @@ entries:
     version: 1.3.6
   - apiVersion: v2
     appVersion: 2.283.1
-    created: "2021-10-20T11:36:27.047122+02:00"
+    created: "2021-11-02T10:17:57.301926+01:00"
     description: A Helm chart to deploy self-hosted GitHub Actions runners
     digest: 3214f37f2b49a164308e83bdfce561ba025a7081f323f9de07a42aef5a5a4493
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
@@ -25,7 +25,7 @@ entries:
     version: 1.3.5
   - apiVersion: v2
     appVersion: 2.282.1
-    created: "2021-10-20T11:36:27.046396+02:00"
+    created: "2021-11-02T10:17:57.301304+01:00"
     dependencies:
     - name: smarter-device-manager
       repository: https://osism.github.io/helm-charts
@@ -40,7 +40,7 @@ entries:
     version: 1.3.4
   - apiVersion: v2
     appVersion: 2.282.1
-    created: "2021-10-20T11:36:27.045457+02:00"
+    created: "2021-11-02T10:17:57.300477+01:00"
     description: A Helm chart to deploy self-hosted GitHub Actions runners
     digest: 001986645427fd0e069807a132cec7e569f3319fcdc7df1493f7d092f28f9986
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
@@ -51,7 +51,7 @@ entries:
     version: 1.3.3
   - apiVersion: v2
     appVersion: 2.282.1
-    created: "2021-10-20T11:36:27.045132+02:00"
+    created: "2021-11-02T10:17:57.300097+01:00"
     description: A Helm chart to deploy self-hosted GitHub Actions runners
     digest: 3ffec895f11afa4cf38cce6096330646d3d56f38a341f79d545293ed2e096430
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
@@ -62,7 +62,7 @@ entries:
     version: 1.3.2
   - apiVersion: v2
     appVersion: 2.282.1
-    created: "2021-10-20T11:36:27.044803+02:00"
+    created: "2021-11-02T10:17:57.299729+01:00"
     description: A Helm chart to deploy self-hosted GitHub Actions runners
     digest: 2dd670901821a98114e96a7dabf04fae09ad2eb960b63c7beccff6931251e2d2
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
@@ -73,7 +73,7 @@ entries:
     version: 1.3.1
   - apiVersion: v2
     appVersion: 2.282.1
-    created: "2021-10-20T11:36:27.044465+02:00"
+    created: "2021-11-02T10:17:57.299199+01:00"
     description: A Helm chart to deploy self-hosted GitHub Actions runners
     digest: 1c8bfb65724b0700ae9669d10f28e4bbd9294b2d4217014f2b10d427c65cd5ae
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
@@ -84,7 +84,7 @@ entries:
     version: 1.3.0
   - apiVersion: v2
     appVersion: 2.282.1
-    created: "2021-10-20T11:36:27.044111+02:00"
+    created: "2021-11-02T10:17:57.298593+01:00"
     description: A Helm chart to deploy self-hosted GitHub Actions runners
     digest: 1bab2ca8710fc958423299971f58d93b47d2ead3c9c20607d0f0c0f06169b645
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
@@ -95,7 +95,7 @@ entries:
     version: 1.2.0
   - apiVersion: v2
     appVersion: 2.282.1
-    created: "2021-10-20T11:36:27.043755+02:00"
+    created: "2021-11-02T10:17:57.29802+01:00"
     description: A Helm chart to deploy self-hosted GitHub Actions runners
     digest: f6d03f57503e713f7fb5221a966cbfb71d029dea45482bc3f2150d19f6e45f6c
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
@@ -106,7 +106,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: 2.282.1
-    created: "2021-10-20T11:36:27.043126+02:00"
+    created: "2021-11-02T10:17:57.297462+01:00"
     description: A Helm chart to deploy self-hosted GitHub Actions runners
     digest: e2cad52efd84aeecd00198786a3ac8c437ddcbff23fc11e975ef26e0b16c472c
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
@@ -115,33 +115,22 @@ entries:
     urls:
     - https://osism.github.io/helm-charts/github-actions-runner-1.0.0.tgz
     version: 1.0.0
-  hound-search:
+  hound:
   - apiVersion: v2
     appVersion: v0.4.0
-    created: "2021-10-20T11:36:27.048159+02:00"
-    description: A Helm chart to deploy hound-search
-    digest: 9c2dcd7d9f84b6953756678ff6380317026ebd17dd8b5edbb458a4daf514ea9c
+    created: "2021-11-02T10:17:57.302645+01:00"
+    description: A Helm chart to deploy hound
+    digest: 4008e3d0a4ff8fce9762da1219d42eabc8e90ae95ffb78d5015f8e16434df32b
     icon: https://raw.githubusercontent.com/hound-search/hound/main/ui/assets/favicon.ico
-    name: hound-search
+    name: hound
     type: application
     urls:
-    - https://osism.github.io/helm-charts/hound-search-1.1.0.tgz
-    version: 1.1.0
-  - apiVersion: v2
-    appVersion: v0.4.0
-    created: "2021-10-20T11:36:27.047803+02:00"
-    description: A Helm chart to deploy hound-search
-    digest: 86936ca10a1825ead628b7b4d8febaa35e5e021dd1e50633fd0ea3aba215c4de
-    icon: https://raw.githubusercontent.com/hound-search/hound/main/ui/assets/favicon.ico
-    name: hound-search
-    type: application
-    urls:
-    - https://osism.github.io/helm-charts/hound-search-1.0.0.tgz
-    version: 1.0.0
+    - https://osism.github.io/helm-charts/hound-1.2.0.tgz
+    version: 1.2.0
   smarter-device-manager:
   - apiVersion: v2
     appVersion: v1.20.7
-    created: "2021-10-20T11:36:27.048434+02:00"
+    created: "2021-11-02T10:17:57.303261+01:00"
     description: A Helm chart to deploy a fuse device manager
     digest: ca7d3da1d4d44eadaedca1c340813690ab67284af1a011ede9bca0b356097fc8
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
@@ -150,4 +139,4 @@ entries:
     urls:
     - https://osism.github.io/helm-charts/smarter-device-manager-1.0.0.tgz
     version: 1.0.0
-generated: "2021-10-20T11:36:27.042377+02:00"
+generated: "2021-11-02T10:17:57.296762+01:00"

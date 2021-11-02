@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "hound-search.name" -}}
+{{- define "hound.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "hound-search.fullname" -}}
+{{- define "hound.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "hound-search.chart" -}}
+{{- define "hound.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "hound-search.labels" -}}
-helm.sh/chart: {{ include "hound-search.chart" . }}
-{{ include "hound-search.selectorLabels" . }}
+{{- define "hound.labels" -}}
+helm.sh/chart: {{ include "hound.chart" . }}
+{{ include "hound.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,7 +45,7 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "hound-search.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "hound-search.name" . }}
+{{- define "hound.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "hound.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
