@@ -31,7 +31,9 @@ spec:
             - name: SECRET_GITHUB_URL
               value: {{ .Values.runner.url }}
             - name: SECRET_NAME
-              value: {{ .Values.runner.name }}
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
             - name: SECRET_GITHUB_APP_ID
               valueFrom:
                 secretKeyRef:
