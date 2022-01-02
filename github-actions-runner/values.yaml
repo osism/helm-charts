@@ -4,7 +4,7 @@ image:
   name: osism/github-actions-runner
   pullPolicy: Always
   repository: quay.io
-  tag: "latest"
+  tag: "2.286.0"
   auth:
     enabled: false
     # username:
