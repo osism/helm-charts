@@ -3,37 +3,48 @@ entries:
   github-actions-runner:
   - apiVersion: v2
     appVersion: 2.286.0
-    created: "2022-01-03T11:44:42.273494+01:00"
+    created: "2022-08-10T14:10:22.915933+02:00"
     description: A Helm chart to deploy self-hosted GitHub Actions runners
     digest: ba1332336d6e355e79a42f636e4ac05107c5712f100977d1444c72c979df925e
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
     name: github-actions-runner
     type: application
     urls:
-    - https://osism.github.io/helm-charts/github-actions-runner-2.0.0.tgz
+    - https://osism.github.io/helm/charts/github-actions-runner-2.0.0.tgz
     version: 2.0.0
   hound:
   - apiVersion: v2
     appVersion: v0.4.0
-    created: "2022-01-03T11:44:42.273919+01:00"
+    created: "2022-08-10T14:10:22.916449+02:00"
     description: A Helm chart to deploy hound
     digest: 4008e3d0a4ff8fce9762da1219d42eabc8e90ae95ffb78d5015f8e16434df32b
     icon: https://raw.githubusercontent.com/hound-search/hound/main/ui/assets/favicon.ico
     name: hound
     type: application
     urls:
-    - https://osism.github.io/helm-charts/hound-1.2.0.tgz
+    - https://osism.github.io/helm/charts/hound-1.2.0.tgz
     version: 1.2.0
+  pulp:
+  - apiVersion: v1
+    appVersion: 3.15.8
+    created: "2022-08-10T14:10:22.917046+02:00"
+    description: A Helm Chart for pulp
+    digest: bd7b03f8bb92097dddc0bfa9d5ddacd18427f04899a93fc29a2330724216a25a
+    name: pulp
+    type: application
+    urls:
+    - https://osism.github.io/helm/charts/pulp-1.0.0.tgz
+    version: 1.0.0
   smarter-device-manager:
   - apiVersion: v2
     appVersion: v1.20.7
-    created: "2022-01-03T11:44:42.274194+01:00"
+    created: "2022-08-10T14:10:22.917467+02:00"
     description: A Helm chart to deploy a fuse device manager
     digest: ca7d3da1d4d44eadaedca1c340813690ab67284af1a011ede9bca0b356097fc8
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
     name: smarter-device-manager
     type: application
     urls:
-    - https://osism.github.io/helm-charts/smarter-device-manager-1.0.0.tgz
+    - https://osism.github.io/helm/charts/smarter-device-manager-1.0.0.tgz
     version: 1.0.0
-generated: "2022-01-03T11:44:42.272975+01:00"
+generated: "2022-08-10T14:10:22.914377+02:00"
