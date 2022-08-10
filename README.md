@@ -53,6 +53,21 @@ helm list --namespace smarter-device-manager
 helm uninstall --namespace smarter-device-manager smarter-device-manager
 ```
 
+## pulp
+
+### Purpose
+
+Installs pulp package manager.
+
+### Installation
+
+```sh
+helm show values osism/pulp >> values.yaml
+helm install pulp --create-namespace --namespace pulp --values values.yaml osism/pulp
+helm list --namespace pulp
+helm uninstall --namespace pulp pulp
+```
+
 ## Notes
 
 ### Packaging
@@ -61,6 +76,7 @@ helm uninstall --namespace smarter-device-manager smarter-device-manager
 helm package github-actions-runner
 helm package hound
 helm package smarter-device-manager
+helm package pulp
 ```
 
 ### Indexing

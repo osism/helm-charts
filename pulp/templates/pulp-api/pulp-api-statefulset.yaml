@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "pulp.fullname" . }}-api
+  labels:
+    {{- include "pulp.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  serviceName: {{ include "pulp.fullname" . }}-api
+  selector:
+    matchLabels:
+      {{- include "pulp.selectorLabels" . | nindent 6 }}
+      tier: api
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "pulp.selectorLabels" . | nindent 8 }}
+        tier: api
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - args:
+            - pulp-api
+          env:
+            - name: POSTGRES_SERVICE_HOST
+              value: {{ include "pulp.fullname" . }}-postgres
+            - name: POSTGRES_SERVICE_PORT
+              value: {{ .Values.postgres.port | default 5432 | quote }}
+            - name: PULP_ADMIN_PASSWORD
+              value: password
+          image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag }}"
+          imagePullPolicy: {{ .Values.api.image.pullPolicy }}
+          name: {{ include "pulp.fullname" . }}-api
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          ports:
+            - containerPort: 24817
+              name: api
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /etc/pulp/settings.py
+              name: pulp-api-settings
+              subPath: settings.py
+            - mountPath: /etc/pulp/certs/database_fields.symmetric.key
+              name: pulp-api-settings
+              subPath: database_fields.symmetric.key
+            - mountPath: /var/lib/pulp
+              name: pulp-data
+      hostname: pulp-api
+      restartPolicy: Always
+      volumes:
+        - name: pulp-api-settings
+          configMap:
+            name: {{ include "pulp.fullname" . }}-api
+        - name: pulp-data
+          persistentVolumeClaim:
+            claimName: pulp-data
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

@@ -1,0 +1,120 @@
+postgres:
+  # accessMode: ReadWriteOnce
+  image:
+    pullPolicy: IfNotPresent
+    repository: docker.io/library/postgres
+    tag: 13
+  # port: 5432
+  # service_type: ClusterIP
+  storage: 1Gi
+  # storageClass: ""
+pulpdata:
+  accessMode: ReadWriteMany
+  storage: 10Gi
+  # storageClass: ""
+api:
+  # accessMode: ReadWriteOnce
+  image:
+    pullPolicy: IfNotPresent
+    repository: quay.io/pulp/pulp
+    tag: latest
+  # port: 24817
+  # service_type: ClusterIP
+  storage: 1Gi
+  # storageClass: ""
+content:
+  image:
+    pullPolicy: IfNotPresent
+    repository: quay.io/pulp/pulp
+    tag: latest
+  # port: 24816
+  # service_type: ClusterIP
+web:
+  # accessMode: ReadWriteOnce
+  image:
+    pullPolicy: IfNotPresent
+    repository: quay.io/pulp/pulp-web
+    tag: latest
+  # port: 8080
+  # service_type: ClusterIP
+  storage: 1Gi
+  # storageClass: ""
+worker:
+  image:
+    pullPolicy: IfNotPresent
+    repository: quay.io/pulp/pulp
+    tag: latest
+  storage: 1Gi
+  # storageClass: ""
+  worker_amount: 2
+redis:
+  # accessMode: ReadWriteOnce
+  image:
+    pullPolicy: IfNotPresent
+    repository: docker.io/library/redis
+    tag: latest
+  # port: 6379
+  # service_type: ClusterIP
+  storage: 1Gi
+  # storageClass: ""
+
+###################
+
+imagePullSecrets:
+#  - name: docker-registry-secret
+#  - name: internal-registry-secret
+
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations: {}
+  hosts:
+    - host: 1.2.3.4
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: cert-ingress-pulp
+  #    hosts:
+  #      - 1.2.3.4
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
