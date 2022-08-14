@@ -10,7 +10,7 @@ postgres:
   # storageClass: ""
 pulpdata:
   accessMode: ReadWriteMany
-  storage: 10Gi
+  storage: 30Gi
   # storageClass: ""
 api:
   # accessMode: ReadWriteOnce
@@ -85,7 +85,7 @@ ingress:
   className: "nginx"
   annotations: {}
   hosts:
-    - host: 1.2.3.4
+    - host: 213.131.230.23.nip.io
       paths:
         - path: /
           pathType: ImplementationSpecific
