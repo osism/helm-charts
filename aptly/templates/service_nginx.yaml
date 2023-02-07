@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ template "aptly.nginx" . }}"
+  labels:
+    {{- include "aptly.labels" . | nindent 4 }}
+    component: nginx
+spec:
+  type: {{ .Values.service_nginx.type }}
+  ports:
+    - port: {{ .Values.service_nginx.port }}
+      targetPort: http-nginx
+      protocol: TCP
+      name: http-nginx
+  selector:
+    {{- include "aptly.selectorLabels" . | nindent 4 }}
