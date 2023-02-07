@@ -1,0 +1,8 @@
+apiVersion: v2
+name: wormhole
+description: A Helm chart for OSISM offline mirrors -  wormhole (ansible roles and collections)
+type: application
+# Helm chart version. Increment on changes to this helm chart.
+version: 0.1.0
+# Application Version. Increment on changes to the application version.
+appVersion: "latest"

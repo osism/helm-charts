@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "wormhole.fullname" . }}
+  labels:
+    {{- include "wormhole.labels" . | nindent 4 }}
+    component: wormhole
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "wormhole.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "wormhole.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.wormhole.repository }}:{{ .Values.image.wormhole.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.wormhole.pullPolicy }}
+          command:
+            - "uvicorn"
+          args:
+            - "app.main:app"
+            - "--host"
+            - "0.0.0.0"
+            - "--port"
+            - "{{- .Values.service_wormhole.port }}"
+            - "--root-path"
+            - "/wormhole"
+          ports:
+            - name: http-wormhole
+              containerPort: {{ .Values.service_wormhole.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /api
+              port: http-wormhole
+          readinessProbe:
+            httpGet:
+              path: /api
+              port: http-wormhole
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: data
+              mountPath: /mirror
+              subPath: {{ .Values.persistence.subPath }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: data
+          {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.data.existingClaim | default (include "wormhole.pvc" .) }}
+          {{- else }}
+          emptyDir: {}
+          {{- end }}
