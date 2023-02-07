@@ -1,0 +1,8 @@
+apiVersion: v2
+name: bandersnatch
+description: A Helm chart for OSISM offline mirrors -  bandersnatch, banderctl (pypi packages)
+type: application
+# Helm chart version. Increment on changes to this helm chart.
+version: 0.1.0
+# Application Version. Increment on changes to the application version.
+appVersion: "6.1.0"

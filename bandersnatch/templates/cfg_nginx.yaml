@@ -1,0 +1,22 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ template "nginx.config" . }}
+  labels:
+{{ include "bandersnatch.labels" . | indent 4 }}
+data:
+  bandersnatch.conf: |
+    server {
+        listen       80;
+        root         /data;
+        autoindex    on;
+        charset      utf-8;
+
+        error_page 404 /404.html;
+            location = /40x.html {
+        }
+
+        error_page 500 502 503 504 /50x.html;
+            location = /50x.html {
+        }
+    }

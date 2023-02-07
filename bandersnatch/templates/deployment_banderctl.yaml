@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "banderctl.fullname" . }}
+  labels:
+    {{- include "bandersnatch.labels" . | nindent 4 }}
+    component: banderctl
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "bandersnatch.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "bandersnatch.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.banderctl.repository }}:{{ .Values.image.banderctl.tag | default "latest" }}"
+          imagePullPolicy: {{ .Values.image.banderctl.pullPolicy }}
+          command:
+            - "uvicorn"
+          args:
+            - "app.main:app"
+            - "--host"
+            - "0.0.0.0"
+            - "--port"
+            - "{{- .Values.service_banderctl.port }}"
+          ports:
+            - name: http-banderctl
+              containerPort: {{ .Values.service_banderctl.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /docs
+              port: http-banderctl
+          readinessProbe:
+            httpGet:
+              path: /docs
+              port: http-banderctl
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: config
+              mountPath: /opt
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: config
+          {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.config.existingClaim | default (include "bandersnatch.config" .) }}
+          {{- else }}
+          emptyDir: {}
+          {{- end }}
