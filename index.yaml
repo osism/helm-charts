@@ -3,7 +3,7 @@ entries:
   aptly:
   - apiVersion: v2
     appVersion: 1.5.2
-    created: "2023-02-20T09:52:26.987838+01:00"
+    created: "2023-02-21T10:06:14.784173+01:00"
     description: A Helm chart for OSISM offline mirrors -  aptly (deb)
     digest: 36f9c743062b7832cd11b5368aa1978df967ffed405d20504f9199e406dd13c8
     name: aptly
@@ -14,7 +14,7 @@ entries:
   bandersnatch:
   - apiVersion: v2
     appVersion: 6.1.0
-    created: "2023-02-20T09:52:26.98863+01:00"
+    created: "2023-02-21T10:06:14.784962+01:00"
     description: A Helm chart for OSISM offline mirrors -  bandersnatch, banderctl
       (pypi packages)
     digest: 02f0cd8136005273a60108f04e1eda4928c66306abf1d3ca3c949b55fcb85369
@@ -26,7 +26,7 @@ entries:
   github-actions-runner:
   - apiVersion: v2
     appVersion: 2.286.0
-    created: "2023-02-20T09:52:26.989144+01:00"
+    created: "2023-02-21T10:06:14.785396+01:00"
     description: A Helm chart to deploy self-hosted GitHub Actions runners
     digest: ba1332336d6e355e79a42f636e4ac05107c5712f100977d1444c72c979df925e
     icon: https://unpkg.com/ionicons@5.5.2/dist/svg/return-up-forward-outline.svg
@@ -38,7 +38,17 @@ entries:
   registry:
   - apiVersion: v2
     appVersion: 2.8.1
-    created: "2023-02-20T09:52:26.989615+01:00"
+    created: "2023-02-21T10:06:14.786141+01:00"
+    description: A Helm chart for OSISM offline mirrors -  registry (containers)
+    digest: 283b4cedf362942798f5347b5e9fd63649d5eb329ce7cc9a049624e8b2450410
+    name: registry
+    type: application
+    urls:
+    - https://osism.github.io/helm-charts/registry-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 2.8.1
+    created: "2023-02-21T10:06:14.785805+01:00"
     description: A Helm chart for OSISM offline mirrors -  registry (containers)
     digest: fee7e555aeec0f4c858d1ab27f53d63be469f87967d3f4b176b44728442b8d7c
     name: registry
@@ -49,7 +59,7 @@ entries:
   wormhole:
   - apiVersion: v2
     appVersion: latest
-    created: "2023-02-20T09:52:26.99009+01:00"
+    created: "2023-02-21T10:06:14.786583+01:00"
     description: A Helm chart for OSISM offline mirrors -  wormhole (ansible roles
       and collections)
     digest: 00471a7d5a802bc99c2c6c4070e56d84251ac20fb45cf980e11d3710bc3b55c5
@@ -58,4 +68,4 @@ entries:
     urls:
     - https://osism.github.io/helm-charts/wormhole-0.1.0.tgz
     version: 0.1.0
-generated: "2023-02-20T09:52:26.986431+01:00"
+generated: "2023-02-21T10:06:14.783186+01:00"

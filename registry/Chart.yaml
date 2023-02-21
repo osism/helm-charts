@@ -3,6 +3,6 @@ name: registry
 description: A Helm chart for OSISM offline mirrors -  registry (containers)
 type: application
 # Helm chart version. Increment on changes to this helm chart.
-version: 0.1.0
+version: 0.1.1
 # Application Version. Increment on changes to the application version.
 appVersion: "2.8.1"
