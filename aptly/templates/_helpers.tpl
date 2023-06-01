@@ -51,16 +51,22 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
-Match labels
+Create the name of the service account to use
 */}}
-{{- define "aptly.pvc" -}}
-  {{- printf "%s-pvc" (include "aptly.fullname" .) -}}
-{{- end -}}
+{{- define "aptly.serviceAccountName" -}}
+{{- if .Values.serviceAccount.create }}
+{{- default (include "aptly.fullname" .) .Values.serviceAccount.name }}
+{{- else }}
+{{- default "default" .Values.serviceAccount.name }}
+{{- end }}
+{{- end }}
 
-{{- define "aptly.api" -}}
-  {{- printf "%s-api" (include "aptly.fullname" .) -}}
-{{- end -}}
-
-{{- define "aptly.nginx" -}}
-  {{- printf "%s-nginx" (include "aptly.fullname" .) -}}
-{{- end -}}
+{{/*
+Volume labels
+*/}}
+{{- define "aptly.data_volume" -}}
+  {{- printf "%s-data" (include "aptly.fullname" .) -}}
+{{- end }}
+{{- define "aptly.gpg_volume" -}}
+  {{- printf "%s-gpg" (include "aptly.fullname" .) -}}
+{{- end }}
