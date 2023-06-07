@@ -4,15 +4,34 @@
 
 replicaCount: 1
 
-image:
-  repository: urpylka/aptly
+image_prepare:
+  repository: quay.io/osism/aptly-prepare
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
+image_aptly:
+  repository: quay.io/osism/aptly-aptly
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+image_nginx:
+  repository: quay.io/osism/aptly-nginx
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
 
 podAnnotations: {}
 
@@ -27,38 +46,16 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-service_api:
-  type: ClusterIP
-  port: 8080
-
-service_nginx:
+service:
   type: ClusterIP
   port: 80
 
-ingress_api:
+ingress:
   enabled: true
   className: "nginx"
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: api.aptly.1.2.3.4.nip.io
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
-
-ingress_nginx:
-  enabled: true
-  className: "nginx"
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: aptly.1.2.3.4.nip.io
+    - host: 213.131.230.173.nip.io
       paths:
         - path: /
           pathType: ImplementationSpecific
@@ -79,6 +76,13 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
 nodeSelector: {}
 
 tolerations: []
@@ -88,17 +92,23 @@ affinity: {}
 persistence:
   enabled: true
   resourcePolicy: "keep"
-  # Use the existing PVC which must be created manually before bound,
-  # and specify the "subPath" if the PVC is shared with other components
-  existingClaim: ""
-  # Specify the "storageClass" used to provision the volume. Or the default
-  # StorageClass will be used (the default).
-  # Set it to "-" to disable dynamic provisioning
-  storageClass: ""
-  subPath: ""
-  accessMode: ReadWriteOnce
-  # have a look here: https://www.debian.org/mirror/size
-  # currently it's about 630Gi for amd64 and approxiamelty 500Gi for arm64
-  # so 1500Gi should be enough at the moment
-  size: 5Gi
-  annotations: {}
+  gpg:
+    existingClaim: ""
+    storageClass: ""
+    accessMode: ReadWriteMany
+    size: 1Gi
+    annotations: {}
+  data:
+    existingClaim: ""
+    storageClass: ""
+    accessMode: ReadWriteMany
+    size: 200Gi
+    annotations: {}
+
+# UTC presumably
+interval: "0 0 * * *"
+wrapper_env_vars:
+  sources_url: 'https://raw.githubusercontent.com/osism/sbom/main/mirrors.yaml'
+  merged_mirror_name: 'mirror'
+  release: 'jammy'
+  password: 'OSISM'
