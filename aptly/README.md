@@ -10,16 +10,16 @@ gpg1 --export --armor --output /opt/aptly/public/gpgkey OSISM
 
 Answer the prompts like this:
 
-- <RETURN>
-- <RETURN>
-- <RETURN>
-- y<RETURN>
-- OSISM<RETURN>
-- <RETURN>
-- <RETURN>
-- O<RETURN>
-- Super_s3cret
-- Super_s3cret
+- \<RETURN>
+- \<RETURN>
+- \<RETURN>
+- y\<RETURN>
+- OSISM\<RETURN>
+- \<RETURN>
+- \<RETURN>
+- O\<RETURN>
+- Super_s3cret\<RETURN>
+- Super_s3cret\<RETURN>
 
 ## HINT
 
