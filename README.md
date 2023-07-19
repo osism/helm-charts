@@ -1,9 +1,5 @@
 # helm-charts
 
-|chart                |description                             |
-|---------------------|----------------------------------------|
-|github-actions-runner|self-hosted github-actions runner       |
-
 ## Installation
 
 ```sh
@@ -17,11 +13,7 @@ helm uninstall --namespace CHARTNAME CHARTNAME
 ## Packaging
 
 ```sh
-helm package aptly
-helm package bandersnatch
-helm package github-actions-runner
-helm package registry
-helm package wormhole
+helm package NAME
 ```
 
 ## Indexing
