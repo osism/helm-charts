@@ -2,11 +2,7 @@
 
 |chart                |description                             |
 |---------------------|----------------------------------------|
-|aptly                |mirror for deb packages                 |
-|bandersnatch         |mirror for pypi packages                |
 |github-actions-runner|self-hosted github-actions runner       |
-|registry             |mirror for container images             |
-|wormhole             |mirror for ansible collections and roles|
 
 ## Installation
 
