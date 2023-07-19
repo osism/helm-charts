@@ -1,2 +1,0 @@
-Name of your self-hosted GitHub Actions runner:
-{{ include "runner.fullname" . }}
